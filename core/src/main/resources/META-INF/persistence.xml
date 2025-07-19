@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+    <persistence-unit name="bankUnit" transaction-type="JTA">
+
+        <jta-data-source>
+            jdbc/bank_connection
+        </jta-data-source>
+
+        <class>com.graynode.ee.core.entity.User</class>
+        <class>com.graynode.ee.core.entity.ScheduledTransfer</class>
+        <class>com.graynode.ee.core.entity.Status</class>
+        <class>com.graynode.ee.core.entity.Account</class>
+        <class>com.graynode.ee.core.entity.Role</class>
+        <class>com.graynode.ee.core.entity.Transaction</class>
+
+        <shared-cache-mode>NONE</shared-cache-mode>
+        <properties>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
+            <property name="jakarta.persistence.sharedCache.mode" value="NONE"/>
+            <property name="eclipselink.cache.shared.default" value="false"/>
+        </properties>
+    </persistence-unit>
+</persistence>

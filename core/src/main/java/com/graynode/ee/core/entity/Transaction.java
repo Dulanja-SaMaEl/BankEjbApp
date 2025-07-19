@@ -1,0 +1,78 @@
+package com.graynode.ee.core.entity;
+
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "transactions")
+public class Transaction implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = "source_account_id")
+    private Account sourceAccount;
+
+    @ManyToOne
+    @JoinColumn(name = "destination_account_id")
+    private Account destinationAccount;
+
+    private String type; // "TRANSFER","CREDIT", "DEBIT"
+    private Double amount;
+    private LocalDateTime timestamp;
+
+    // Getters, Setters
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Account getSourceAccount() {
+        return sourceAccount;
+    }
+
+    public void setSourceAccount(Account sourceAccount) {
+        this.sourceAccount = sourceAccount;
+    }
+
+    public Account getDestinationAccount() {
+        return destinationAccount;
+    }
+
+    public void setDestinationAccount(Account destinationAccount) {
+        this.destinationAccount = destinationAccount;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Double amount) {
+        this.amount = amount;
+    }
+
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
+    }
+}
